@@ -2,7 +2,7 @@
 """
 Script to combine multiple columns with separation character.
 
-- Read the data as string.
+- Read the data.
 - Join the columns with separation character in the middle.
 - Delete the columns if specified.
 - Export the dataframe.
@@ -49,8 +49,8 @@ delete = args.delete
 outFileName = args.output
 
 
-# Read excel file with dtype set to str (easier to join).
-df = pd.read_excel(fileName, sheet_name=sheet, nrows=nRows, dtype=str)
+# Read excel file.
+df = pd.read_excel(fileName, sheet_name=sheet, nrows=nRows)
 if verbose:
     print("Original Data")
     print(df)
@@ -58,7 +58,7 @@ if verbose:
 
 
 # Combine the columns with separation character.
-df[colname] = df[cols].agg(sep.join, axis=1)
+df[colname] = df[cols].astype(str).agg(sep.join, axis=1)
 
 
 # Delete the columns if specified.

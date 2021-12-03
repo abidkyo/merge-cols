@@ -3,7 +3,7 @@
 ## Description
 Script to combine multiple columns with separation character.
 
-- Read the data as string.
+- Read the data.
 - Join the columns with separation character in the middle.
 - Delete the columns if specified.
 - Export the dataframe.
