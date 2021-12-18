@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 """
-Script to combine multiple columns with separation character.
+Script to merge multiple columns with separation character.
 
 - Read the data.
 - Join the columns with separation character in the middle.
@@ -8,7 +8,7 @@ Script to combine multiple columns with separation character.
 - Export the dataframe.
 
 Usage:
-    python3 comb_cols.py -v -f data.xlsx --cols "First Name" "Last Name" --sep " " --colname "Name" -d -o output.xlsx
+    python3 merge-cols.py -v -f data.xlsx --cols "First Name" "Last Name" --sep " " --colname "Name" -d -o output.xlsx
 """
 
 
@@ -18,13 +18,13 @@ import pandas as pd
 
 
 # Create argument parser
-parser = argparse.ArgumentParser(description="Combine multiple columns with separation character.")
+parser = argparse.ArgumentParser(description="Merge multiple columns with separation character.")
 required_argument = parser.add_argument_group("required named arguments")
 parser.add_argument("-v", "--verbose", action="store_true", help="verbosity")
 required_argument.add_argument("-f", "--file", help="excel filename", required=True)
 parser.add_argument("-s", "--sheet", default=0, help="sheet name or number")
 parser.add_argument("-n", "--nrows", default=None, type=int, help="number of rows to read")
-required_argument.add_argument("--cols", nargs="+", help="columns to combine", required=True)
+required_argument.add_argument("--cols", nargs="+", help="columns to merge", required=True)
 required_argument.add_argument("--sep", help="separation character", required=True)
 required_argument.add_argument("--colname", help="new column name", required=True)
 parser.add_argument("-d", "--delete", action="store_true", help="option to delete given columns")
@@ -57,7 +57,7 @@ if verbose:
     print()
 
 
-# Combine the columns with separation character.
+# Merge the columns with separation character.
 df[colname] = df[cols].astype(str).agg(sep.join, axis=1)
 
 
@@ -66,7 +66,7 @@ if delete:
     df.drop(columns=cols, inplace=True)
 
 if verbose:
-    print("Combined Data")
+    print("Merged Data")
     print(df)
     print()
 

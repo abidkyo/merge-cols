@@ -1,33 +1,35 @@
-# comb_cols
+# Merge columns
 
 ## Description
-Script to combine multiple columns with separation character.
+
+Script to merge multiple columns with separation character.
 
 - Read the data.
 - Join the columns with separation character in the middle.
 - Delete the columns if specified.
 - Export the dataframe.
 
-
 ## Usage
+
 ```bash
-python3 comb_cols.py -v -f data.xlsx --cols "First Name" "Last Name" --sep " " --colname "Name" -d -o output.xlsx
+python3 merge-cols.py -v -f data.xlsx --cols "First Name" "Last Name" --sep " " --colname "Name" -d -o output.xlsx
 ```
 
-
 ## Dependencies
+
 [pandas](https://pandas.pydata.org/)
 [openpyxl](https://openpyxl.readthedocs.io)
+
 ```bash
 python3 -m pip install pandas openpyxl
 ```
 
-
 ## Help Message
-```bash
-usage: comb_cols.py [-h] [-v] -f FILE [-s SHEET] [-n NROWS] --cols COLS [COLS ...] --sep SEP --colname COLNAME [-d] -o OUTPUT
 
-Combine multiple columns with separation character.
+```bash
+usage: merge-cols.py [-h] [-v] -f FILE [-s SHEET] [-n NROWS] --cols COLS [COLS ...] --sep SEP --colname COLNAME [-d] -o OUTPUT
+
+Merge multiple columns with separation character.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -41,15 +43,15 @@ optional arguments:
 required named arguments:
   -f FILE, --file FILE  excel filename
   --cols COLS [COLS ...]
-                        columns to combine
+                        columns to merge
   --sep SEP             separation character
   --colname COLNAME     new column name
   -o OUTPUT, --output OUTPUT
                         output filename
 ```
 
-
 ## Example Output
+
 ```
 Original Data
   First Name   Last Name  Gender  Age                        Email        City  Postcode
@@ -65,7 +67,7 @@ Original Data
 9    Miranda      Martin  Female   20      m.martin@randatmail.com  Ouverpolis     83293
 
 
-Combined Data
+Merged Data
    Gender  Age                        Email        City  Postcode               Name
 0  Female   21      c.walker@randatmail.com      Xusall     53572   Charlotte Walker
 1    Male   19  a.richardson@randatmail.com      Bensey     45529  Ashton Richardson
@@ -80,6 +82,6 @@ Combined Data
 
 ```
 
-
 ### Note
+
 Tested with Python 3.8.10 and Pandas 1.3.4
